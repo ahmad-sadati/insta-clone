@@ -28,10 +28,13 @@
 import { reactive, toRefs } from "vue";
 import { api } from "src/boot/axios";
 import { useQuasar } from "quasar";
+import router from "src/router";
+import { useRouter } from "vue-router";
 export default {
   // name: 'PageName',
   setup() {
     const $q = useQuasar();
+    const router = useRouter();
     const props = reactive({
       name: null,
       email: null,
@@ -50,6 +53,7 @@ export default {
               message: "Successfully Registered",
               color: "positive",
             });
+            router.push('login')
           } else {
             $q.notify({
               message: "Register Failed. Try again.",
