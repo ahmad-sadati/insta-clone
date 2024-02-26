@@ -2,13 +2,13 @@
   <q-page padding>
     <!-- content -->
     <div class="row">
-      <div class="col12">
+      <div class="col-12">
         <q-input v-model="email" />
       </div>
-      <div class="col12">
+      <div class="col-12">
         <q-input v-model="password" type="password" />
       </div>
-      <div class="col12">
+      <div class="col-12">
         <q-btn @click="login" label="Log in" />
       </div>
     </div>
@@ -16,8 +16,10 @@
 </template>
 
 <script>
+import { useQuasar } from "quasar";
 import { api } from "src/boot/axios";
 import router from "src/router";
+import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 
 export default {

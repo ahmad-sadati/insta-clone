@@ -10,5 +10,9 @@
 			"path": "FE"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"i18n-ally.localesPaths": [
+			"FE/src/i18n"
+		]
+	}
 }
