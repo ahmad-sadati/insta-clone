@@ -36,6 +36,7 @@ export default {
         .post("oauth/token", {
           username: props.email,
           password: props.password,
+          grant_type: "refresh_token",
           client_id: 2,
           client_secret: "EimcrDxxFW2ynSbcwjW9Uf13zXDW4N5dGj1xm6lw",
         })
@@ -52,7 +53,7 @@ export default {
             router.push("/");
           } else {
             $q.notify({
-              message: "Try again.",
+              message: e.response.data.message,
               color: "negative",
             });
           }
