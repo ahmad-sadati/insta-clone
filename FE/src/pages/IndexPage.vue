@@ -12,7 +12,7 @@
 
 <script>
 import { api } from "src/boot/axios";
-import { defineComponent, toRefs } from "vue";
+import { defineComponent, reactive, toRefs } from "vue";
 
 export default defineComponent({
   name: "IndexPage",
@@ -21,7 +21,9 @@ export default defineComponent({
       userData: null,
     });
     function fetchMe() {
-      api.get(api.user).then((r) => {});
+      api.get(api.user).then((r) => {
+        console.log(r.data);
+      });
     }
     fetchMe();
     return {

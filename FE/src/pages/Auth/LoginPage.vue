@@ -50,6 +50,11 @@ export default {
             $q.cookies.set("access_token", r.data.access_token);
             $q.cookies.set("refresh_token", r.data.refresh_token);
             $q.cookies.set("expires_in", r.data.expires_in);
+            api.defaults.headers.common = {
+              Authorization: "Bearer " + r.data.access_token,
+              "Content-Type": "application/json",
+              Accept: "application/json;charset=UTF-8",
+            };
             router.push("/");
           } else {
             $q.notify({
