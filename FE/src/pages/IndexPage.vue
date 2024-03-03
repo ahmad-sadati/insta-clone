@@ -1,5 +1,8 @@
 <template>
   <q-page class="flex flex-center">
+    <div v-if="userData">
+      {{ userData.email }}
+    </div>
     <q-btn
       class="full-width"
       color="blue"
@@ -22,12 +25,12 @@ export default defineComponent({
     });
     function fetchMe() {
       api.get(api.user).then((r) => {
-        console.log(r.data);
+        props.userData = r.data;
       });
     }
     fetchMe();
     return {
-      ...toRefs(),
+      ...toRefs(props),
     };
   },
 });
