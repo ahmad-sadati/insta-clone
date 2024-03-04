@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <div v-if="userData">
-      {{ userData.email }}
+      {{ userData.phone.number }}
     </div>
     <q-btn
       class="full-width"
