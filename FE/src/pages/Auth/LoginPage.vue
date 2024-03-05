@@ -3,7 +3,7 @@
     <!-- content -->
     <div class="row">
       <div class="col-12">
-        <q-input v-model="email" />
+        <q-input v-model="email" type="email" />
       </div>
       <div class="col-12">
         <q-input v-model="password" type="password" />
@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import { useQuasar } from "quasar";
 import { api } from "src/boot/axios";
 import router from "src/router";
 import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   // name: 'PageName',
@@ -36,7 +36,7 @@ export default {
         .post("oauth/token", {
           username: props.email,
           password: props.password,
-          grant_type: "refresh_token",
+          grant_type: "password",
           client_id: 2,
           client_secret: "EimcrDxxFW2ynSbcwjW9Uf13zXDW4N5dGj1xm6lw",
         })

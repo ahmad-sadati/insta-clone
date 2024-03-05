@@ -9,7 +9,7 @@
       rounded
       label="Register"
       @click="$router.push('/register')"
-    ></q-btn>
+    />
   </q-page>
 </template>
 
@@ -24,7 +24,7 @@ export default defineComponent({
       userData: null,
     });
     function fetchMe() {
-      api.get(api.user).then((r) => {
+      api.get("api/user").then((r) => {
         props.userData = r.data;
       });
     }
