@@ -1,12 +1,19 @@
 <template>
   <q-page padding>
     <!-- content -->
-    <div class="row">
+    <div class="row q-col-gutter-md">
       <div class="col-12">
-        <q-input v-model="mobile" type="mobile" />
+        <q-input prefix="+98" v-model="mobile" type="mobile" label="mobile" />
       </div>
       <div class="col-12">
-        <q-btn @click="login" label="Submit" />
+        <q-btn
+          class="full-width"
+          rounded
+          color="blue"
+          unelevated
+          @click="login"
+          label="Submit"
+        />
       </div>
     </div>
   </q-page>
