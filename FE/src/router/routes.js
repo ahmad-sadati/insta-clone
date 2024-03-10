@@ -26,7 +26,7 @@ const routes = [
     ],
   },
   {
-    path: "/confirm",
+    path: "/confirm/:mobile",
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("src/pages/Auth/ConfirmLogin.vue") },

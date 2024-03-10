@@ -34,6 +34,7 @@ export default {
     const props = reactive({
       email: null,
       password: null,
+      mobile: null,
     });
     function login() {
       api
@@ -42,7 +43,7 @@ export default {
         })
         .then((r) => {
           if (r.data.status) {
-            router.push("confirm");
+            router.push("/confirm/" + props.mobile);
           } else {
             $q.notify({
               message: "Error!",

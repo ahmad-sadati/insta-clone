@@ -46,8 +46,9 @@ Route::post('/verify', function (Request $request) {
     $password = rand(1111, 9999);
     if ($user) {
         $user->password = $password;
+        $user->save();
     } else {
-        $user = new User();
+        $user = new User;
         $user->mobile = $request->mobile;
         $user->password = $password;
         $user->save();
@@ -55,10 +56,10 @@ Route::post('/verify', function (Request $request) {
     $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
     $user = "ahmadsadati";
     $pass = "A123$!123";
-    $fromNum = "+98100009";
+    $fromNum = "+983000505";
     $toNum = array($request->mobile);
-    $pattern_code = "139";
-    $input_data = array("tracking-code" => "1054 4-41", "name" => "PAnel");
+    $pattern_code = "dil2eofzq9pmznf";
+    $input_data = array("code" => $password);
 
     echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
     return response()->json(['status' => true, 'user' => $user]);
