@@ -20,19 +20,16 @@
 </template>
 
 <script>
-import { api } from "src/boot/axios";
-import router from "src/router";
 import { reactive, toRefs } from "vue";
+import { api } from "src/boot/axios";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
-
 export default {
   // name: 'PageName',
   setup() {
     const router = useRouter();
     const $q = useQuasar();
     const props = reactive({
-      email: null,
       password: null,
       mobile: null,
     });
@@ -42,8 +39,9 @@ export default {
           mobile: props.mobile,
         })
         .then((r) => {
+          console.log(r.data);
           if (r.data.status) {
-            router.push("/confirm/" + props.mobile);
+            router.push("/confirm/"+ props.mobile);
           } else {
             $q.notify({
               message: "Error!",

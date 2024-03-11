@@ -15,7 +15,6 @@
 
 <script>
 import { api } from "src/boot/axios";
-import router from "src/router";
 import { reactive, toRefs } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useQuasar } from "quasar";
@@ -36,7 +35,7 @@ export default {
           password: props.password,
           grant_type: "password",
           client_id: 2,
-          client_secret: "EimcrDxxFW2ynSbcwjW9Uf13zXDW4N5dGj1xm6lw",
+          client_secret: "8YZfYBt060fiy4uQizKk4L17FAJpjaCgQxJXr2LK",
         })
         .then((r) => {
           if (r.data.access_token) {

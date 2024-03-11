@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 Route::post('/register', function (Request $request) {
     if (Auth::check()) {
         // true
@@ -53,14 +53,14 @@ Route::post('/verify', function (Request $request) {
         $user->password = $password;
         $user->save();
     }
-    $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
-    $user = "ahmadsadati";
-    $pass = "A123$!123";
-    $fromNum = "+983000505";
-    $toNum = array($request->mobile);
-    $pattern_code = "dil2eofzq9pmznf";
-    $input_data = array("code" => $password);
+    // $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
+    // $user = "ahmadsadati";
+    // $pass = "A123$!123";
+    // $fromNum = "+983000505";
+    // $toNum = array($request->mobile);
+    // $pattern_code = "dil2eofzq9pmznf";
+    // $input_data = array("code" => $password);
 
-    echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
-    return response()->json(['status' => true, 'user' => $user]);
+    // echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
+    return response()->json(['status' => true, 'user' => $user , 'password'=> $password]);
 });

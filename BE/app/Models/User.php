@@ -13,7 +13,10 @@ use Illuminate\Database\Eloquent\Factories\Relationship;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-
+    public function findForPassport(string $username): User
+    {
+        return $this->where('mobile', $username)->first();
+    }
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +25,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'mobile',
         'password',
     ];
 
