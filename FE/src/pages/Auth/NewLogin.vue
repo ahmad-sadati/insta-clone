@@ -3,7 +3,12 @@
     <!-- content -->
     <div class="row q-col-gutter-md">
       <div class="col-12">
-        <q-input prefix="+98" v-model="mobile" type="mobile" label="mobile" />
+        <q-input
+          prefix="+98"
+          v-model="appData.mobile"
+          type="mobile"
+          label="mobile"
+        />
       </div>
       <div class="col-12">
         <q-btn
@@ -24,9 +29,11 @@ import { reactive, toRefs } from "vue";
 import { api } from "src/boot/axios";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
+import { useAppDataStore } from "src/stores/appData";
 export default {
   // name: 'PageName',
   setup() {
+    const appData = useAppDataStore();
     const router = useRouter();
     const $q = useQuasar();
     const props = reactive({
@@ -36,12 +43,12 @@ export default {
     function login() {
       api
         .post("api/verify", {
-          mobile: props.mobile,
+          mobile: appData.mobile,
         })
         .then((r) => {
           console.log(r.data);
           if (r.data.status) {
-            router.push("/confirm/"+ props.mobile);
+            router.push("/confirm");
           } else {
             $q.notify({
               message: "Error!",
@@ -87,6 +94,7 @@ export default {
     return {
       ...toRefs(props),
       login,
+      appData,
     };
   },
 };
