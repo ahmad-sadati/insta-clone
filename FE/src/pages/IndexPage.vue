@@ -1,15 +1,5 @@
 <template>
   <q-page class="flex flex-center">
-    <div v-if="userData">
-      {{ appData.userDetail.phone.number }}
-    </div>
-    <q-btn
-      class="full-width"
-      color="blue"
-      rounded
-      label="Register"
-      @click="$router.push('/register')"
-    />
   </q-page>
 </template>
 

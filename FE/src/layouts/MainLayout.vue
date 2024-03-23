@@ -29,10 +29,12 @@
       </q-list>
     </q-drawer>
     <q-footer bordered class="bg-transparent text-white">
-      <q-tabs v-model="tab" class="bg-white text-gre7-8">
-        <q-tab name="mails" icon="mail" />
-        <q-tab name="alarms" icon="alarm" />
-        <q-tab name="movies" icon="movie" />
+      <q-tabs indicator-color="blue" v-model="tab" class="bg-white text-grey-8">
+        <q-route-tab to="/" name="search" icon="search" />
+        <q-separator vertical inset color="blue" />
+        <q-route-tab to="/posts" name="post" icon="add" />
+        <q-separator vertical inset color="blue" />
+        <q-route-tab to="/profile" name="profile" icon="person" />
       </q-tabs>
     </q-footer>
     <q-page-container>
@@ -99,8 +101,9 @@ export default defineComponent({
 
   setup() {
     const leftDrawerOpen = ref(false);
-
+    const tab = ref("search");
     return {
+      tab,
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer() {
