@@ -13,7 +13,20 @@ const routes = [
     ],
   },
   {
-    path: "/",
+    path: "/addpost",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/AddPost.vue"),
+        meta: {
+          auth: true,
+        },
+      },
+    ],
+  },
+  {
+    path: "/posts",
     component: () => import("layouts/MainLayout.vue"),
     children: [
       {
