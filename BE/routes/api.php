@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -64,3 +65,4 @@ Route::post('/verify', function (Request $request) {
     // echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
     return response()->json(['status' => true, 'user' => $user , 'password'=> $password]);
 });
+Route::apiResource('posts', PostController::class);
