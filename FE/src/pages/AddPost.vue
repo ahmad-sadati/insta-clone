@@ -29,6 +29,7 @@
 
 <script>
 import { reactive, toRefs } from "vue";
+import { api } from "src/boot/axios";
 export default {
   // name: 'PageName',
   setup() {
@@ -37,11 +38,15 @@ export default {
       description: null,
     });
     function sendpost() {
-      api.post('api/post',{
-        title:props.title,
-        description:props.description
-      }).then((r) => {console.log(r.data)})
-      .catch(e=>{})
+      api
+        .post('api/posts', {
+          title: props.title,
+          description: props.description,
+        })
+        .then( r => {
+          console.log(r.data);
+        })
+        .catch(e => {});
     }
     return {
       ...toRefs(props),

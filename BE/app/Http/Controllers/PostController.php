@@ -28,7 +28,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $user = $request->user();
+        $request['user_id'] = $user->id;
         $post = Post::create($request->all());
+        if($post){
+            return response()->json(['status'=>true, 'post'=>$post]);
+        } else{
+            return response()->json(['status'=>false]);
+        }
     }
 
     /**
