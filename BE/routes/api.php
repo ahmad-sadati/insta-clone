@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
-*/
+ */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -63,6 +63,6 @@ Route::post('/verify', function (Request $request) {
     // $input_data = array("code" => $password);
 
     // echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
-    return response()->json(['status' => true, 'user' => $user , 'password'=> $password]);
+    return response()->json(['status' => true, 'user' => $user , 'password' => $password]);
 });
-Route::apiResource('posts', PostController::class);
+Route::middleware('auth:api')->apiResource('posts', PostController::class);

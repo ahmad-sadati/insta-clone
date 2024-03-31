@@ -15,7 +15,7 @@
       </div>
       <div class="col-12">
         <q-btn
-          @click="sendpost"
+          @click="sendPost"
           class="full-width"
           label="Save"
           color="light-green"
@@ -37,20 +37,20 @@ export default {
       title: null,
       description: null,
     });
-    function sendpost() {
+    function sendPost() {
       api
-        .post('api/posts', {
+        .post("api/posts", {
           title: props.title,
           description: props.description,
         })
-        .then( r => {
+        .then(r => {
           console.log(r.data);
         })
-        .catch(e => {});
+        .catch((e) => {});
     }
     return {
       ...toRefs(props),
-      sendpost,
+      sendPost,
     };
   },
 };
