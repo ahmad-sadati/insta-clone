@@ -31,10 +31,10 @@ class PostController extends Controller
         $user = $request->user();
         $request['user_id'] = $user->id;
         $post = Post::create($request->all());
-        if($post){
-            return response()->json(['status'=>true, 'post'=>$post]);
-        } else{
-            return response()->json(['status'=>false]);
+        if ($post) {
+            return response()->json(['status' => true, 'post' => $post]);
+        } else {
+            return response()->json(['status' => false]);
         }
     }
 
@@ -68,5 +68,10 @@ class PostController extends Controller
     public function destroy(post $post)
     {
         //
+    }
+    public function myPost(Request $request)
+    {
+        $user = $request->user();
+        return $user->posts;
     }
 }

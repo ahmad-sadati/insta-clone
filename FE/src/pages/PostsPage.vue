@@ -24,7 +24,7 @@ export default {
       posts: [],
     });
     function fethMyPosts() {
-      api.get("api/myposts").then((r) => {
+      api.get("api/my-posts").then((r) => {
         props.posts = r.data.myPosts;
       });
     }

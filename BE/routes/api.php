@@ -42,6 +42,18 @@ Route::post('/login', function (Request $request) {
         return Auth::check();
     }
 });
+// function sendSms($mobile, $password)
+// {
+// $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
+// $user = "ahmadsadati";
+// $pass = "A123$!123";
+// $fromNum = "+983000505";
+// $toNum = array($request->mobile);
+// $pattern_code = "dil2eofzq9pmznf";
+// $input_data = array("code" => $password);
+
+// echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
+// }
 Route::post('/verify', function (Request $request) {
     $user = User::where('mobile', $request->mobile)->first();
     $password = rand(1111, 9999);
@@ -54,15 +66,18 @@ Route::post('/verify', function (Request $request) {
         $user->password = $password;
         $user->save();
     }
+    // sendSms($request-> mobile, $password)
     // $client = new SoapClient("http://ippanel.com/class/sms/wsdlservice/server.php?wsdl");
-    // $user = "ahmadsadati";
-    // $pass = "A123$!123";
-    // $fromNum = "+983000505";
-    // $toNum = array($request->mobile);
-    // $pattern_code = "dil2eofzq9pmznf";
-    // $input_data = array("code" => $password);
+// $user = "ahmadsadati";
+// $pass = "A123$!123";
+// $fromNum = "+983000505";
+// $toNum = array($request->mobile);
+// $pattern_code = "dil2eofzq9pmznf";
+// $input_data = array("code" => $password);
 
-    // echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
-    return response()->json(['status' => true, 'user' => $user , 'password' => $password]);
+// echo $client->sendPatternSms($fromNum, $toNum, $user, $pass, $pattern_code, $input_data);
+
+    return response()->json(['status' => true, 'user' => $user, 'password' => $password]);
 });
 Route::middleware('auth:api')->apiResource('posts', PostController::class);
+Route::get('my-posts', [PostController::class, 'mypost']);
